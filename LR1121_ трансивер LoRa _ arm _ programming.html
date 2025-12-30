@@ -1,0 +1,2824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0083)https://microsin.net/programming/arm/lr1121-multi-band-lora-transceiver/Pechat.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <!--<base href="https://microsin.net/programming/arm/lr1121-multi-band-lora-transceiver/Pechat.html">--><base href=".">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="keywords" content="LR1121, Multi-band, LoRa, transceiver">
+  
+  <meta name="author" content="microsin">
+  <meta name="description" content="Описание многофункционального трансивера для передачи цифровых данных LR1121.">
+  
+  <title>LR1121: трансивер LoRa | arm | programming</title>
+  <script type="text/javascript" src="./LR1121_ трансивер LoRa _ arm _ programming_files/mootools.js.Без названия"></script>
+  <script type="text/javascript" src="./LR1121_ трансивер LoRa _ arm _ programming_files/caption.js.Без названия"></script>
+  <script type="text/javascript">
+/*<![CDATA[*/
+	var jax_live_site = 'https://microsin.net/index.php';
+	var jax_site_type = '1.5';
+/*]]>*/
+</script><script type="text/javascript" src="./LR1121_ трансивер LoRa _ arm _ programming_files/ajax_1.0.js.Без названия"></script>
+  <link rel="stylesheet" type="text/css" href="./LR1121_ трансивер LoRa _ arm _ programming_files/style.css">
+<link rel="stylesheet" type="text/css" href="./LR1121_ трансивер LoRa _ arm _ programming_files/comment_style.css">
+
+<script type="text/javascript">
+/*<![CDATA[*/
+var jc_option           = "";
+var jc_autoUpdate       = "0";
+var jc_update_period    = 300*1000;
+var jc_orderBy          = "1";
+var jc_livesite_busyImg = "https://microsin.net/components/com_jomcomment/busy.gif";
+var jc_username         = "";
+var jc_email            = "";
+var jc_commentForm;
+/*]]>*/
+</script>
+
+	<link rel="stylesheet" href="./LR1121_ трансивер LoRa _ arm _ programming_files/general.css" type="text/css">
+		<link rel="stylesheet" href="./LR1121_ трансивер LoRa _ arm _ programming_files/template.css" type="text/css">
+<meta http-equiv="Content-Language" content="en"></head>
+<body class="contentpane">
+	
+	<table class="contentpaneopen">
+<tbody><tr>
+		<td class="contentheading" width="100%">
+					LR1121: трансивер LoRa			</td>
+				<td align="right" width="100%" class="buttonheading">
+		<a href="https://microsin.net/programming/arm/lr1121-multi-band-lora-transceiver/Pechat.html#" onclick="window.print();return false;"><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/printButton.png" alt="Печать"></a>		</td>
+	</tr>
+</tbody></table>
+
+<table class="contentpaneopen">
+<tbody><tr>
+	<td valign="top">
+		<span class="small">
+			Добавил(а) microsin		</span>
+		&nbsp;&nbsp;
+	</td>
+</tr>
+
+
+
+<tr>
+<td valign="top">
+<p><strong>LR1121</strong> это продвинутый трансивер <strong>LoRa</strong><sup>®</sup>, обладающий сверхнизким энергопотреблением и вместе с тем дальним радиусом действия. Он поддерживает наземную связь <strong>ISM</strong> суб-гигагерцового диапазона и глобального спектра 2.4 ГГц, а также поддержку диапазонов S и L спутниковой связи.</p>
+
+
+
+<p>Для случаев использования <strong>LPWAN</strong> чип LR1121 поддерживает модуляцию LoRa и <strong>(G)FSK</strong> в обоих диапазонах до 1 ГГц и до 2.4ГГц, модуляцию <strong>Sigfox</strong><sup>®</sup> на диапазоне до 1 ГГц, а также Long Range Frequency Hopping Spread Spectrum (<strong>LR-FHSS</strong>) на диапазонах до 1 ГГц и 2.4 ГГц ISM, и еще L (1.525-1.660 ГГц) и S (1.9-2.1 ГГц) диапазоны для прямых спутниковых коммуникаций.</p>
+<p><span style="color: #808080;">Примечание: объяснение незнакомых терминов и сокращений см. в разделе "Словарик", в конце статьи.</span></p>
+<p>LR1121 удовлетворяет требованиям физического слоя спецификации <strong>LoRaWAN</strong><sup>®</sup>, выпущенным LoRa Alliance<sup>®</sup>, в то же время с сохранением широких возможностей по конфигурированию, обеспечивая реализацию требований различных приложений и проприетарных протоколов.</p>
+<p>Трансивер подойдет для систем, нацеленных на совместимость с радио стандартами включая, но не ограниваясь следующими: ETSI EN 300 220, FCC CFR 47 Part 15, ARIB и требования регулирующих органов Китая.</p>
+<p>[<strong>1. Описание системы</strong>]</p>
+<p><strong>1.1. Упрощенная блок-схема</strong></p>
+<p><a href="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-block-diagram-fig1-1.png"><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-block-diagram-fig1-1.png" width="600" height="431" alt="LR1121 block diagram fig1 1"></a></p>
+<p>Рис. 1.1. Упрощенная блок-схема трансивера LR1121.</p>
+<p><strong>1.2. Обзор</strong></p>
+<p><strong>1.2.1</strong>. Low-Power High-Sensitivity LoRa<sup>®</sup>/(G)FSK Half-Duplex RF Transceiver</p>
+<p>• Поддержка диапазонов частот 150 - 960 МГц (sub-GHz), 1.525-1.660 ГГц L-диапазона, 1.9-2.1 ГГц S-диапазона и 2.4 ГГц ISM диапазона.<br>• Режимы с низким уровнем шума (Low Noise Figure modes) для повышенной чувствительности LoRa/(G)FSK (выводы дифференциальных входов RFI_P/N_LF0).<br>• Мощный PA +22dBm (вывод RFO_HP_LF) и PA высокой эффективности +15dBm (вывод RFO_LP_LF) для sub-GHz диапазона.<br>• Высокочастотный PA +13dBm (вывод RFIO_HF) для диапазона 2.4 ГГц ISM, 1.9-2.1 ГГц S-Band и 1.525-1.660 ГГц L-Band, с согласованием импеданса 50 ом, уменьшающим номенклатуру и стоимость списка деталей BOM.<br>• Интегрированный выбираемый регулятор питания PA для упрощения реализации двух режимов мощности +15/+22dBm на одной печатной плате.<br>• Может поддерживать BOM мировых стандартов, рассчитанный на несколько регионов, что позволяет адаптировать схему к требованиям регуляторов.<br>• Радио-интерфейс полностью совместим с семейством чипов SX1261/SX1262/SX1268 и стандартом LoRaWAN, определенным LoRa Alliance.<br>• Передатчик LR-FHSS с технологией intra-packet hopping.<br>• Трансивер Sigfox, поддерживающий все варианты конфигураций (Sigfox Radio Configurations от RC1 до RC7). Есть возможность функции Downlink.<br>• LoRa Multi-SF для параллельного детектирования двух разных SF.</p>
+<p><strong>1.2.2</strong>. Multi-Purpose Radio Front-End</p>
+<p>• Синтезатор частоты несущей в диапазоне 150 МГц .. 2.5 ГГц.</p>
+<p>&nbsp; &nbsp;- 1.5 .. 2.5 ГГц обрабатываются через порт RFIO_HF RF, уже согласованный на 50 Ом.<br>&nbsp; &nbsp;- Вся sub-GHz поддержка обеспечивается другими портами RF.</p>
+<p>• Цифровой синтез частот.</p>
+<p><strong>1.2.3</strong>. Управление питанием</p>
+<p>• Доступны две формы регулирования напряжения (DC-DC или LDO), которые можно выбирать в зависимости от приоритетов дизайна приложения. DC-DC рекомендуется использовать для энергоэффективности ценой добавления дополнительной индуктивности.<br>• Power On Reset (POR), детектирование просадки питания (Brown-out detection) и индикация низкого уровня заряда батареи (Low Battery).<br>• Измерение напряжения батареи.</p>
+<p><strong>1.2.4</strong>. Источники тактирования</p>
+<p>• Внутренний RC-генератор 32.768kHz Low Frequency (LF), опционально используемый для схемы Real Time Clock (RTC).<br>• Кварцевый генератор 32.768kHz LF crystal oscillator (XOSC), используемый для RTC. Также возможна подача внешней опорной частоты 32.768 кГц на вывод DIO11.<br>• Внутренний RC-генератор 32MHz HF RC (HFRC), позволяющий конфигурировать устройства без необходимости запуска основного кварцевого генератора.<br>• Кварцевый генератор 32MHz HF (HFXOSC) для работы радиотракта, с помощью которого можно калибровать ошибку частоты внутренних RC-генераторов.<br>• Может использоваться 32MHz TCXO для подачи тактов на схему, его источник питания интегрирован на чипе REG_TCXO через вывод VTCXO. Схема может загрузиться, когда TCXO подключен вместо кварца 32MHz, однако все начальные калибровки (start-up POR) пропускаются. Процессор хоста должен запрограммировать конфигурацию TCXO и заново запустить калибровки перед дальнейшим использованием чипа.<br>• Для дополнительного руководства по использованию внешних источников тактирования см. секцию 4.7.</p>
+<p><strong>1.2.5</strong>. Цифровая подсистема</p>
+<p>Встроенные в схему функции энергосбережения с достаточными аппаратными ресурсами для реализации широкого спектра приложений:</p>
+<p>• Логика для управления режимами чипа, radio front-end, управление питанием (power management), цифровые интерфейсы.<br>• RAM частично сохраняет данные во время режима сна (sleep mode).<br>• Энергонезависимая память (NVM).<br>• Подчиненный последовательный интерфейс (SPI).<br>• DIO0 используется как индикатор занятости "BUSY", показывающий состояние, когда внутренний MCU чипа не может обработать никакие команды контроллера хоста.<br>• Аппаратная обработка дребезга (hardware de-bounce) и детектирование событий (event detection, IOCD).<br>• Малопотребляющая схема счетчика реального времени (RTC) и сторожевой таймер (WDG).<br>• Модемы LoRa, (G)FSK, совместимые с семейством чипов SX126x и SX127x в sub-GHz диапазонах.<br>• Модемы LoRa, (G)FSK, совместимые с семействами чипов SX128x в диапазоне 2.4GHz ISM.<br>• Long Range FHSS в режиме передачи, с поддержкой функции intra-packet hopping.</p>
+<p><strong>1.2.6</strong>. Криптографическая подсистема</p>
+<p>• Аппаратная поддержка алгоритмов шифрования/дешифровки на базе AES-128.<br>• Обработка параметров устройства, таких как DevEUI и JoinEUI, как это определено LoRa Alliance.<br>• Защищает от неавторизованного доступа конфиденциальную информацию, такую как ключи шифрования.<br>• Сохраняет NwkKey, AppKey, как определено стандартом LoRaWAN.</p>
+<p>[<strong>2. Описание выводов</strong>]</p>
+<p>Таблица 2-1. Назначение выводов LR1121.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><strong>№</strong></td>
+<td><strong>Имя</strong></td>
+<td><strong>Тип</strong></td>
+<td><strong>Описание</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>0</td>
+<td>GND</td>
+<td>-</td>
+<td>Exposed Ground pad, нижняя теплоотводящая контактная площадка. Общий провод питания и сигналов.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>1</td>
+<td>VR_PA</td>
+<td>O</td>
+<td>Регулируемое питание PA для всех усилителей мощности.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>2</td>
+<td>VBAT_RF</td>
+<td>I</td>
+<td>Подача питания от батареи.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>3</td>
+<td>VTCXO</td>
+<td>O</td>
+<td>Внутренняя схема регулятора питания для внешнего опорного источника тактирования TCXO.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>4</td>
+<td>XTA</td>
+<td>-</td>
+<td>Подключение кварца 32 МГц, или вход для подключения внешнего опорного сигнала тактов TCXO.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>5</td>
+<td>XTB</td>
+<td>-</td>
+<td>Подключение кварца 32 МГц, или NC в случае использования внешнего TCXO.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>6</td>
+<td>NRESET</td>
+<td>I</td>
+<td>Сигнал сброса, активный уровень 0.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>7</td>
+<td>32k_P/DIO11</td>
+<td>I/O</td>
+<td>Подключение кварцевого резонатора 32.768 кГц, или вход для внешней частоты тактов 32.768 кГц. Может использоваться как многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>8</td>
+<td>32k_N/DIO10</td>
+<td>I/O</td>
+<td>Подключение кварцевого резонатора 32.768 кГц. Может использоваться как многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>9</td>
+<td>DIO9</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>10</td>
+<td>DIO8</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>11</td>
+<td>DIO7</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>12</td>
+<td>VREG</td>
+<td>O</td>
+<td>Регулируемое выходное напряжение от внутреннего регулятора LDO/DC-DC.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>13</td>
+<td>GND</td>
+<td>-</td>
+<td>Ground, земля, общий провод питания и сигналов.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>14</td>
+<td>DCC_SW</td>
+<td>-</td>
+<td>Выход ключа DC-DC.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>15</td>
+<td>VBAT</td>
+<td>I</td>
+<td>Подача питания от батареи.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td><span style="color: #808080;">16</span></td>
+<td><span style="color: #808080;">DNC</span></td>
+<td><span style="color: #808080;">-</span></td>
+<td><span style="color: #808080;">Никуда не подключается.</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td><span style="color: #808080;">17</span></td>
+<td><span style="color: #808080;">DNC</span></td>
+<td><span style="color: #808080;">-</span></td>
+<td><span style="color: #808080;">Никуда не подключается.</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td><span style="color: #808080;">18</span></td>
+<td><span style="color: #808080;">DNC</span></td>
+<td><span style="color: #808080;">-</span></td>
+<td><span style="color: #808080;">Никуда не подключается.</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>19</td>
+<td>DIO6</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>20</td>
+<td>DIO5</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>21</td>
+<td>DIO4</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>22</td>
+<td>DIO3</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>23</td>
+<td>DIO2</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>24</td>
+<td>DIO1</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>25</td>
+<td>DIO0/BUSY</td>
+<td>I/O</td>
+<td>Многофункциональный цифровой вывод порта I/O.&nbsp;Может использоваться как сигнал состояния занятости MCU чипа.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>26</td>
+<td>RFIO_HF</td>
+<td>I/O</td>
+<td>|RF вход/выход для любой частоты свыше 1.9 ГГц.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td><span style="color: #808080;">27</span></td>
+<td><span style="color: #808080;">DNC</span></td>
+<td><span style="color: #808080;">-</span></td>
+<td><span style="color: #808080;">Никуда не подключается.</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td><span style="color: #808080;">28</span></td>
+<td><span style="color: #808080;">DNC</span></td>
+<td><span style="color: #808080;">-</span></td>
+<td><span style="color: #808080;">Никуда не подключается.</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>29</td>
+<td>RFI_N_LF0</td>
+<td>I</td>
+<td rowspan="2">Дифференциальный вход RF LF приемника для работы в диапазоне sub-GHz.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>30</td>
+<td>RFI_P_LF0</td>
+<td>I</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>31</td>
+<td>RFO_LP_LF</td>
+<td>O</td>
+<td>Выход RF передатчика маломощного PA, для работы в диапазоне sub-GHz.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>32</td>
+<td>RFO_HP_LF</td>
+<td>O</td>
+<td>Выход RF передатчика мощного PA, для работы в диапазоне sub-GHz.</td>
+</tr>
+</tbody>
+</table>
+<p><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-pinout-fig2-1.png" alt="LR1121 pinout fig2 1"></p>
+<p>Рис. 2-1. Цоколевка корпуса MLPQ32 чипа LR1121.</p>
+<p>[<strong>3. Параметры LR1121</strong>]</p>
+<p><strong>3.1. Предельно допустимые значения</strong> (Absolute Maximum Ratings)</p>
+<p>Стрессовые условия, в которых превышаются указанные ниже значения, могут привести к необратимому отказу устройства. Долговременная эксплуатация устройства в условиях применения этих значений параметров может повлиять на надежность устройства и сократит его время жизни.</p>
+<p>Таблица 3-1. Absolute Maximum Ratings.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VDDmr</td>
+<td>Напряжение питания</td>
+<td style="text-align: center;">-0.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">3.9</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Tmr</td>
+<td>Температура</td>
+<td style="text-align: center;">-55</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+125</td>
+<td style="text-align: center;">°C</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Pmr</td>
+<td>Уровень RF на входе</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.2. Рабочие параметры</strong></p>
+<p>Следующие параметры задают пределы для нормального функционирования и соответствия заявленным параметрическим характеристикам устройства, описанным в этой секции. Функциональность при превышении этих параметров не гарантируется.</p>
+<p>Таблица 3-2. Operating Range.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VDDop</td>
+<td>Напряжение питания</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">1.8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">3.7</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Top</td>
+<td>Температура окружающей среды</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-40</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+85</td>
+<td style="text-align: center;">°C</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Clop</td>
+<td>Ёмкостная нагрузка на цифровых портах</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">пФ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ML</td>
+<td>Максимальная входная мощность</td>
+<td>Sub-GHz цепи</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VSWR</td>
+<td>Коэффициент стоячей волны (КСВ)</td>
+<td>Sub-GHz и RFIO_HF цепи</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">10:1</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3. ESD и Latch-up</strong></p>
+<p>LR1121 это надежное радиочастотное устройство, обладающее хорошей защитой по всем выводам от ESD и эффекта защелкивания (latch-up). Однако возможности защиты не безграничны, и необходимо соблюдать отсутствие превышения параметров из следующей таблицы, чтобы предотвратить необратимое повреждение чипа.</p>
+<p>Таблица 3-3. ESD и Latch-up.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ESD_HBM</td>
+<td>Human Body Model, JEDEC standard JESD22-A114, class II</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">kV</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ESD_CDM</td>
+<td>ESD Charged Device Model, JEDEC standard JESD22-C101, class II</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>LU</td>
+<td>Latch-up, JEDEC standard JESD78, class II level A</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">mA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.4. Электрические спецификации</strong></p>
+<p>Следующие таблицы приводят электрические параметры трансивера LR1121 для следующих условий, если не указано нечто иное:</p>
+<p>• VBAT_RF = VBAT = 3.3V, температура 25°C, FXOSC = 32 МГц, кварцевый резонатор.<br>• FRF = 915/869 МГц, цепи sub-GHz RFI_N/P_LF0 и RFO_HP/LP_LF для FSK и LoRa.<br>• S-band в этих таблицах описывают спецификации между 1.9 и 2.2 ГГц.<br>• FRF = S-band и 2.45GHz для цепи RFIO_HF, используется одинаковый BOM для всех S-band и 2.45 ГГц спецификаций.<br>• L-band в этих таблицах описывают спецификации между 1.525 и 1.660 ГГц.<br>• FRF = L-band для цепи RFIO_HF, со специальным BOM.<br>• Все RF-импедансы на цепях sub-GHz и RFIO_HF соответствуют мульти-диапазонному образцовому дизайну, выходная мощность режима передачи определена на 50 Ом нагрузке, RxBoosted = 1 для LoRa и FSK, дифференциальное использование LNA (уровни усиления приемника описаны в руководстве пользователя устройства [2]).<br>• FSK Bit Error Rate (BER) = 0.1%, 2-уровневая модуляция FSK без предварительной фильтрации, BR = 4.8kb/s, FDA = 5 кГц, BWF = 20 кГц.<br>• LoRa Packet Error Rate (PER) = 1%, BWL= 125 кГц, пакет 64 байта, преамбула 8 символов, код коррекции ошибок CR=4/5, разрешена CRC полезной нагрузки, явный заголовок, диапазон частот sub-GHz.<br>• Blocking Immunity, ACR и подавление по соседнему каналу даны для однотональной помехи и оценочной чувствительности для +3dB, тесты блокирования выполнялись на немодулированной помехе.<br>• Все значения потребления энергии даны в режиме использования XTAL, должно быть добавлено потребление энергии TCXO.<br>• Все полосы пропускания приемника (BW) в этом документе выражены для Double Side Band (DSB).</p>
+<p><strong>3.4.1</strong>. Энергопотребление</p>
+<p>Следующие таблицы дают информацию по общему потреблению тока всех блоков в указанных режимах схемы.</p>
+<p>Таблица 3-4. Энергопотребление в основных режимах.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDPDN</td>
+<td>Режим "выключено" (power down mode)</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="6">μA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSL3</td>
+<td>Режим SLEEP, без RTC</td>
+<td>Сохраняются данные 8kB RAM</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.6</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSL1</td>
+<td>Режим SLEEP</td>
+<td>Данные RAM не сохраняются</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.6</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSL3A</td>
+<td>RTC, работающий от LFRC (32 кГц)</td>
+<td>Сохраняются данные 8kB RAM</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.85</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSL2</td>
+<td>Режим SLEEP</td>
+<td>Данные RAM не сохраняются</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSL4A</td>
+<td>RTC, работающий от LFXOSC (32 кГц)</td>
+<td>Сохраняются данные 8kB RAM</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.75</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSBRLD</td>
+<td>Режим STBY_RC</td>
+<td>HFRC (32 МГц) ON, LDO, системные такты 16 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.25</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="4">mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSBXLD</td>
+<td>Режим STBY_XOSC</td>
+<td>HFXOSC ON, LDO</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.3</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDSBXDC</td>
+<td>Режим STBY_XOSC</td>
+<td>HFXOSC ON, DC-DC</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDFSDC</td>
+<td>Режим синтезатора</td>
+<td>DC-DC, системные такты 32 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2.85</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-5. Энергопотребление в режиме приема, используется DC-DC.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDRXF1</td>
+<td rowspan="4">Потребляемый<br>ток в режиме<br>приема</td>
+<td>FSK 4.8kb/s sub-GHz<br>RxBoosted = 1</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">5.4<br>7.5</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDRXF2</td>
+<td>FSK 4.8kb/s 2.4GHz/S-band<br>RxBoosted = 1</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">5.9<br>6.6</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDRXL1</td>
+<td>LoRa® SF12 125kHz sub-GHz<br>RxBoosted = 1</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">5.7<br>7.8</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDRXL2</td>
+<td>LoRa® SF12 125kHz 2.4GHz/S-band<br>RxBoosted = 1<br>LoRa® SF12 406kHz 2.4GHz/S-band<br>RxBoosted = 1<br>LoRa® SF12 812kHz 2.4GHz/S-band<br>RxBoosted = 1</td>
+<td style="text-align: center;">-<br>-<br>-<br>-<br>-<br>-</td>
+<td style="text-align: center;">6<br>6.7<br>7.6<br>8.3<br>6.8<br>7.5</td>
+<td style="text-align: center;">-<br>-<br>-<br>-<br>-<br>-</td>
+<td style="text-align: center;">mA<br>mA<br>mA<br>mA<br>mA<br>mA</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-6. Энергопотребление в режиме передачи<sup>(1)</sup>.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Диапазон частот</strong></td>
+<td><strong>PA Match</strong></td>
+<td><strong>Настройка вых. мощности</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXLP1<br>IDDTXLP2<br>IDDTXLP3</td>
+<td>868/915MHz</td>
+<td rowspan="2">+14dBm, PA LP LF<sup>(2)</sup></td>
+<td>+15dBm<br>+14dBm<br>+10dBm</td>
+<td style="text-align: center;">-<br>-<br>-</td>
+<td style="text-align: center;">36<br>28<br>18.5</td>
+<td style="text-align: center;">-<br>-<br>-</td>
+<td style="text-align: center;">mA<br>mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXLP4<br>IDDTXLP5<br>IDDTXLP6</td>
+<td>434/490MHz</td>
+<td>+15dBm<br>+14dBm<br>+10dBm</td>
+<td style="text-align: center;">-<br>-<br>-</td>
+<td style="text-align: center;">35<br>28<br>19</td>
+<td style="text-align: center;">-<br>-<br>-</td>
+<td style="text-align: center;">mA<br>mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXHP1<br>IDDTXHP2<br>IDDTXHP3<br>IDDTXHP4</td>
+<td>868/915MHz</td>
+<td rowspan="2">+22dBm, PA HP LF<sup>(3)</sup></td>
+<td>+22dBm<br>+20dBm<br>+17dBm<br>+14dBm</td>
+<td style="text-align: center;">-<br>-<br>-<br>-</td>
+<td style="text-align: center;">118<br>96<br>73<br>50</td>
+<td style="text-align: center;">-<br>-<br>-<br>-</td>
+<td style="text-align: center;">mA<br>mA<br>mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXHP5<br>IDDTXHP6<br>IDDTXHP7<br>IDDTXHP8</td>
+<td>434/490MHz</td>
+<td>+22dBm<br>+20dBm<br>+17dBm<br>+14dBm</td>
+<td style="text-align: center;">-<br>-<br>-<br>-</td>
+<td style="text-align: center;">100<br>86<br>70<br>45</td>
+<td style="text-align: center;">-<br>-<br>-<br>-</td>
+<td style="text-align: center;">mA<br>mA<br>mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXHF1<br>IDDTXHF2</td>
+<td>2.4GHz</td>
+<td>+13dBm, PA HF</td>
+<td>+13dBm<br>+10dBm</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">26<br>23</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXHF3<br>IDDTXHF4</td>
+<td>S-band</td>
+<td>+13dBm, PA HF</td>
+<td>+13dBm<br>+10dBm</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">28<br>24</td>
+<td style="text-align: center;">-<br>-</td>
+<td style="text-align: center;">mA<br>mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IDDTXHF5</td>
+<td>L-band</td>
+<td>+13dBm, PA HF<sup>(4)(5)</sup></td>
+<td>+13dBm</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">mA</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #808080;">Примечания:</span></p>
+<p><span style="color: #808080;">(1) Используются оптимизированные установки, описанные в LR1121 User Manual [2].</span><br><span style="color: #808080;">(2) Режим DC-DC комбинации LDO/DC-DC используется для питания всей схемы.</span><br><span style="color: #808080;">(3) Батарея используется для питания PA, а DC-DC используется для остальной схемы.</span><br><span style="color: #808080;">(4) Получено для специального BOM.</span><br><span style="color: #808080;">(5) Увеличенная выходная мощность, см. таблицу 3-11.</span></p>
+<p><strong>3.4.2</strong>. Основные параметры</p>
+<p>Таблица 3-7. Основные параметры.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FRSYNTH</td>
+<td>Диапазон частот синтезатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2500</td>
+<td style="text-align: center;">МГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FSTEP</td>
+<td>Шаг частоты синтезатора</td>
+<td>FXOSC/ 2</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.9536</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Гц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>HFOSCCP</td>
+<td>Поддерживаемая емкость выводов внешнего кварцевого резонатора 32 МГц</td>
+<td>Недифференциальное подключение к выводам XTA и XTB</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">пФ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>OSCTRM1</td>
+<td>Шаг подстройки HF кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">ppm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>LFCLKFR</td>
+<td>Частота внешних тактов LF, подаваемых на вывод DIO11</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">32768</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">Гц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>LFCLKRF</td>
+<td>Длительность фронтов нарастания/спада тактов LF, подаваемых на вывод DIO11</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">нс</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">BRFSK</td>
+<td>Скорость бит, FSK</td>
+<td>Самая низкая программируемая скорость</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">kb/s</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Минимальный индекс модуляции 0.5</td>
+<td>Самая высокая программируемая скорость</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">300<sup>(1)</sup></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FDAFSK</td>
+<td>Девиация частоты, FSK</td>
+<td>Программируемый параметр</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">кГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="6">BRLORA</td>
+<td rowspan="2">Сырая скорость данных, LoRa, sub-GHz</td>
+<td>SF12, BWL=62.5kHz, CR=1/2</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">b/s</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF5, BWL=500kHz, CR=4/5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">62.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">kb/s</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">Сырая скорость данных, LoRa, RFIO_HF S-band</td>
+<td>SF12, BWL=125kHz, CR=4/5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.292</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="4">kb/s</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF5, BWL=500kHz, CR=4/5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">87.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">Сырая скорость данных, LoRa, RFIO_HF 2.4GHz</td>
+<td>SF12, BWL=203kHz, CR=4/5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.476</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF5, BWL=812kHz, CR=4/5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">101.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="6">BWL</td>
+<td rowspan="2">BW сигнала, LoRa</td>
+<td>Самая низкая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">62.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="6">кГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Самая высокая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">500<sup>(2)</sup></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">BW сигнала, LoRa, RFIO_HF S-band</td>
+<td>Самая низкая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Самая высокая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">BW сигнала, LoRa, RFIO_HF 2.4GHz</td>
+<td>Самая низкая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">203</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Самая высокая программируемая BW</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">812</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">SF</td>
+<td rowspan="2">Коэффициент расширения спектра LoRa<br>chips/symbol = 2^SF</td>
+<td>Самая низкая программируемая настройка</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Самая высокая программируемая настройка</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">BWF</td>
+<td rowspan="2">BW двухполосного (DSB) фильтра, FSK<br>цепь сигнала sub-GHz</td>
+<td>Самая низкая программируемая настройка</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">4.8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">кГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Самая высокая программируемая настройка</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">467</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #808080;">Примечания:</span></p>
+<p><span style="color: #808080;">(1) Подразумевается, что максимальный битрейт масштабируется с частотой RF; например 300kb/s в диапазонах частот 869/915 МГц, и только 50kb/s на 150 МГц.</span><br><span style="color: #808080;">(2) Для RF частот ниже 300 МГц полоса частот сигнала LoRa ограничена максимумом 250 кГц, и соответственно снижается скорость данных.</span></p>
+<p>Таблица 3-8. Параметры приемника, диапазоны Sub-GHz.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FRRXLF</td>
+<td>Входная частота RX</td>
+<td>Диапазон частот Sub-GHz, LoRa и FSK<sup>(1)</sup></td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">960</td>
+<td style="text-align: center;">МГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="3">ZINRXLF</td>
+<td rowspan="3">Входной импеданс RX<br>RFI_N_LF0 / RFI_P_LF0<sup>(2)</sup></td>
+<td>433MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">29 - j289</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="3">Ом</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>868MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">9.4 - j141</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>920MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">9.5 -j131</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>PHNLF1</td>
+<td rowspan="3">Фазовый шум синтезатора(3)(4)<br>диапазон sub-GHz</td>
+<td>Смещение 100 кГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-102</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="3">dbc/Hz</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>PHNLF2</td>
+<td>Смещение 1 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-120</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>PHNLF3</td>
+<td>Смещение 10 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-129</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F1</td>
+<td rowspan="5">Чувствительность 2-FSK</td>
+<td>BRF=0.6kb/s, FDA=0.8kHz, BWF=4kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-123</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="5">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F2</td>
+<td>BRF=1.2kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-122</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F3</td>
+<td>BRF=4.8kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-117.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F4</td>
+<td>BRF=38.4kb/s, FDA=40kHz, BWF=160kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-109</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F5</td>
+<td>BRF=250kb/s, FDA=125kHz, BWF=500kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-103.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F1HP3</td>
+<td rowspan="5">Чувствительность 2-FSK,<br>RxBoosted = 1</td>
+<td>BRF=0.6kb/s, FDA=0.8kHz, BWF=4kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-125</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="5">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F2HP3</td>
+<td>BRF=1.2kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-124</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F3HP3</td>
+<td>BRF=4.8kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-119</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F4HP3</td>
+<td>BRF=38.4kb/s, FDA=40kHz, BWF=160kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-111</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2F5HP3</td>
+<td>BRF=250kb/s, FDA=125kHz, BWF=500kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-105</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRFSK</td>
+<td>Подавление по совмещенному каналу, FSK</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="5">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRFSK</td>
+<td>Подавление по соседнему каналу, FSK</td>
+<td>Смещение&nbsp;±50 кГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BIFSK1</td>
+<td rowspan="3">Иммунитет к блокированию, FSK<br>BRF=4.8 kb/s, FDA=5kHz, BWF=20kHz</td>
+<td>Смещение&nbsp;±1 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BIFSK2</td>
+<td>Смещение&nbsp;±2 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BIFSK3</td>
+<td>Смещение&nbsp;±10 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IIP3FSK</td>
+<td>IIP 3 порядка (IIP), FSK</td>
+<td>Нежелательные тональные сигналы @1MHz и 1.96MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">IMRFSK</td>
+<td rowspan="2">Подавление по зеркальному каналу, цепь сигнала sub-GHz</td>
+<td>Без калибровки IQ</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>С калибровкой IQ</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSIG</td>
+<td>Чувствительность приема Sigfox</td>
+<td>BRF=0.6 kb/s, FDA=0.8 kHz, BWF=4 kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-125</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="17">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL1</td>
+<td rowspan="8">Чувствительность LoRa</td>
+<td>BWL=62.5kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-128</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL2</td>
+<td>BWL=62.5kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-142</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL3</td>
+<td>BWL=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-125</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL4</td>
+<td>BWL=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-139</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL5</td>
+<td>BWL=250kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-122</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL6</td>
+<td>BWL=250kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-136</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL7</td>
+<td>BWL=500kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-118</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL8</td>
+<td>BWL=500kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-132</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL1HP7</td>
+<td rowspan="8">Чувствительность LoRa,<br>RxBoosted = 1</td>
+<td>BWL=62.5kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-130</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL2HP7</td>
+<td>BWL=62.5kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-144</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL3HP7</td>
+<td>BWL=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-127</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL4HP7</td>
+<td>BWL=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-141</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL5HP7</td>
+<td>BWL=250kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-124</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL6HP7</td>
+<td>BWL=250kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-138</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL7HP7</td>
+<td>BWL=500kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-121</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSL8HP7</td>
+<td>BWL=500kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-134</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORA1</td>
+<td rowspan="2">Подавление по совмещенному каналу, LoRa</td>
+<td>SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="10">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORA2</td>
+<td>SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORA1</td>
+<td>Подавление по соседнему каналу, LoRa<br>Смещение =&nbsp;±1.5 x BW_L</td>
+<td>BW_L=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORA2</td>
+<td>&nbsp;</td>
+<td>BW_L=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA1</td>
+<td rowspan="6">Иммунитет к блокированию, LoRa<br>BW_L=125kHz</td>
+<td>SF =12, смещение =&nbsp;±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA2</td>
+<td>SF=12, смещение =&nbsp;±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA3</td>
+<td>SF=12, смещение =&nbsp;±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">103</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA4</td>
+<td>SF=7, смещение =&nbsp;±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA5</td>
+<td>SF=7, смещение =&nbsp;±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORA6</td>
+<td>SF =7, смещение =&nbsp;±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="4">FERR</td>
+<td rowspan="4">Максимально допустимое смещение частоты между TX и RX</td>
+<td>SF5 .. SF12, все диапазоны,&nbsp;±25% BW.&nbsp;Применяется самое жесткое ограничение (см. ниже)</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±25%</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">BW_L</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF12</td>
+<td style="text-align: center;">-50</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;" rowspan="3">ppm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF11</td>
+<td style="text-align: center;">-100</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>SF10</td>
+<td style="text-align: center;">-200</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">200</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FDRIFT</td>
+<td>Допуск на дрейф частоты LoRa</td>
+<td>Для ухудшения чувствительности ниже 3dB<br>BW_L=125kHz, SF12, LowDataRateOptimize=1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">Hz/s</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #808080;">Примечания:</span></p>
+<p><span style="color: #808080;">(1) Работа LoRa в диапазоне 150 - 960 МГц.</span><br><span style="color: #808080;">(2) Недифференциальный импеданс представлен на уровне корпуса, без учета влияния печатной платы.</span><br><span style="color: #808080;">(3) Спецификации фазового шума (Phase Noise) даны для рекомендованной полосы PLL, при использовании для определенной модуляции/скорости бит.</span><br><span style="color: #808080;">(4) Phase Noise не постоянный в зависимости от частоты, используется топология VCO + DIV, для двух близких частот фазовый шум может значительно измениться; спецификация покрывает самый плохой случай.</span></p>
+<p>Таблица 3-9. Параметры приемника, диапазоны L-Band, S-Band и 2.4GHz ISM.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FRRXHF</td>
+<td>Входная частота RX</td>
+<td>S-Band, LoRa</td>
+<td style="text-align: center;">1900</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2200</td>
+<td style="text-align: center;">МГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ZINRXHF</td>
+<td>Входной импеданс RX<sup><br></sup></td>
+<td>Импеданс по диапазону RFIO_HF, 2.4GHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">50 - j0</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Ом</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2FHF2</td>
+<td>&nbsp;</td>
+<td>BRF=1.2kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-117</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="4">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2FHF3</td>
+<td>&nbsp;</td>
+<td>BRF=4.8kb/s, FDA=5kHz, BWF=20kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-112</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2FHF4</td>
+<td>&nbsp;</td>
+<td>BRF=38.4kb/s, FDA=40kHz, BWF=160kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-103</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXS2FHF5</td>
+<td>&nbsp;</td>
+<td>BRF=250kb/s, FDA=125kHz, BWF=500kHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-97.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRFSKHF</td>
+<td>Подавление по совмещенному каналу, FSK</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="6">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRFSKHF1</td>
+<td rowspan="2">Подавление по соседнему каналу, FSK</td>
+<td>Смещение&nbsp;±50 кГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRFSKHF2</td>
+<td>Смещение&nbsp;±1 МГц</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">&nbsp;</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BIFSK1</td>
+<td rowspan="2">Иммунитет к блокированию, FSK</td>
+<td>Смещение&nbsp;±2 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BIFSK2</td>
+<td>Смещение&nbsp;±10 МГц</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>IMRFSKHF</td>
+<td>Подавление по зеркальному каналу, FSK</td>
+<td>Без калибровки IQ</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF1</td>
+<td rowspan="6">Чувствительность LoRa<br>S-Band<br>RxBoosted = 1</td>
+<td>BWL=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-118</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="14">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF2</td>
+<td>BWL=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-132.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF3</td>
+<td>BWL=250kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-116</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF4</td>
+<td>BWL=250kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-130</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF5</td>
+<td>BWL=500kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-112</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF6</td>
+<td>BWL=500kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-124.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF7</td>
+<td rowspan="4">Чувствительность LoRa,<br>2.4GHz<br>RxBoosted = 1</td>
+<td>BWL=406kHz, SF=5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-111</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF8</td>
+<td>BWL=406kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-114</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF10</td>
+<td>BWL=812kHz, SF=5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-108</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF9</td>
+<td>BWL=812kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-112</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF11</td>
+<td rowspan="4">Чувствительность LoRa,<br>L-Band<br>RxBoosted = 1</td>
+<td>BWL=62.5kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-125</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF12</td>
+<td>BWL=62.5kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-138</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF13</td>
+<td>BWL=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-122</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RXSLHF14</td>
+<td>BWL=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-135</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF1</td>
+<td rowspan="4">Подавление по совмещенному каналу, LoRa</td>
+<td>BWL=406kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="8">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF2</td>
+<td>BWL=406kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF3</td>
+<td>BWL=812kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF4</td>
+<td>BWL=812kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF5</td>
+<td rowspan="4">Подавление по совмещенному каналу, LoRa, L-Band</td>
+<td>BWL=62.5kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF5</td>
+<td>BWL=62.5kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF6</td>
+<td>BWL=125kHz, SF=7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CCRLORAHF7</td>
+<td>BWL=125kHz, SF=12</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF1</td>
+<td rowspan="8">Подавление по соседнему каналу, LoRa</td>
+<td>BWL=406kHz, SF=7, смещение = +1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="8">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF2</td>
+<td>BWL=406kHz, SF=7, смещение = -1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF3</td>
+<td>BWL=406kHz, SF=12, смещение = +1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF4</td>
+<td>BWL=406kHz, SF=12, смещение = -1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF5</td>
+<td>BWL=812kHz, SF=7, смещение = +1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF6</td>
+<td>BWL=812kHz, SF=7, смещение = -1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF7</td>
+<td>BWL=812kHz, SF=12, смещение = +1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF8</td>
+<td>BWL=812kHz, SF=12, смещение = -1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF9</td>
+<td rowspan="4">Подавление по соседнему каналу, LoRa, L-Band</td>
+<td>BWL=62.5kHz, SF=7, смещение = ±1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="4">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF10</td>
+<td>BWL=62.5kHz, SF=12, смещение = ±1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF11</td>
+<td>BWL=125kHz, SF=7, смещение = ±1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ACRLORAHF12</td>
+<td>BWL=125kHz, SF=12, смещение = ±1.5 x BW_L</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF1</td>
+<td rowspan="12">Иммунитет к блокированию<br>LoRa</td>
+<td>BWL=406kHz, SF=7, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="12">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF2</td>
+<td>BWL=406kHz, SF=7, смещение = ±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF3</td>
+<td>BWL=406kHz, SF=7, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF4</td>
+<td>BWL=406kHz, SF=12, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF5</td>
+<td>BWL=406kHz, SF=12, смещение = ±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF6</td>
+<td>BWL=406kHz, SF=12, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF7</td>
+<td>BWL=812kHz, SF=7, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF8</td>
+<td>BWL=812kHz, SF=7, смещение = ±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF9</td>
+<td>BWL=812kHz, SF=7, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF10</td>
+<td>BWL=812kHz, SF=12, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF11</td>
+<td>BWL=812kHz, SF=12, смещение = ±2MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF12</td>
+<td>BWL=812kHz, SF=12, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF13</td>
+<td rowspan="12">Иммунитет к блокированию<br>LoRa, L-Band</td>
+<td>BWL=62.5kHz, SF=7, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="12">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF14</td>
+<td>BWL=62.5kHz, SF=7, смещение = ±5MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF15</td>
+<td>BWL=62.5kHz, SF=7, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF16</td>
+<td>BWL=62.5kHz, SF=12, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">87</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF17</td>
+<td>BWL=62.5kHz, SF=12, смещение = ±5MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">98</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF18</td>
+<td>BWL=62.5kHz, SF=12, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">106</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF19</td>
+<td>BWL=125kHz, SF=7, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF20</td>
+<td>BWL=125kHz, SF=7, смещение = ±5MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF21</td>
+<td>BWL=125kHz, SF=7, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF22</td>
+<td>BWL=125kHz, SF=12, смещение = ±1MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF23</td>
+<td>BWL=125kHz, SF=12, смещение = ±5MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>BILORAHF24</td>
+<td>BWL=125kHz, SF=12, смещение = ±10MHz</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">104</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-10. Параметры передатчика, цепи Sub-GHz.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXOPLP</td>
+<td rowspan="2">Максимальная мощность TX</td>
+<td>PA LP LF</td>
+<td style="text-align: center;">+12</td>
+<td style="text-align: center;">+15</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXOPHP</td>
+<td>PA HP LF</td>
+<td style="text-align: center;">+19</td>
+<td style="text-align: center;">+22</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXDRPLF1</td>
+<td rowspan="2">Падение максимальной мощности TX в зависимости от VDD (1.8V .. 3.7V)</td>
+<td>PA LP LF, работающий от DC-DC или LDO</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXDRPLF2</td>
+<td>PA HP LF, работа от батареи</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXPRNGLF</td>
+<td>Диапазон мощности TX</td>
+<td>Программируется с шагом -1dBm от максимальной мощности TX</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">шаг</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXACCLF</td>
+<td>Точность шага выходной мощности TX</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±2</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">TXRMPLF</td>
+<td rowspan="2">Время нарастания мощности усилителя</td>
+<td>Программируется, самый малый шаг</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">мкс</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Программируется, самый большой шаг</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">&nbsp;304</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXEVM</td>
+<td>EVM для LR-FHSS</td>
+<td>GMSK 488b/s</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-20</td>
+<td style="text-align: center;">dB</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-11. Параметры передатчика, диапазоны L-Band, S-Band и 2.4GHz ISM.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXOPHF</td>
+<td>Максимальная мощность TX<br>S и 2.4GHz диапазоны</td>
+<td rowspan="2">PA HF</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">+11.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">dBm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXOPHF2</td>
+<td>Максимальная мощность TX<br>L диапазон</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+12.5</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXDRPHF</td>
+<td>Падение максимальной мощности TX в зависимости от VDD (1.8V .. 3.7V)</td>
+<td>PA LP LF, работающий от DC-DC или LDO</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXPRNGHF</td>
+<td>Диапазон мощности TX</td>
+<td>Программируется с шагом -1dBm от максимальной мощности TX</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">шаг</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXACCHF</td>
+<td>Точность шага выходной мощности TX</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±2</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">dB</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="2">TXRMPHF</td>
+<td rowspan="2">Время нарастания мощности усилителя&nbsp;</td>
+<td>Программируется, самый малый шаг</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="2">мкс</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Программируется, самый большой шаг</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">&nbsp;304</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>TXEVMHF</td>
+<td>EVM для LR-FHSS</td>
+<td>GMSK 488b/s</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-20</td>
+<td style="text-align: center;">dB</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-12. Параметры кварца 32 МГц.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FXOSCHF</td>
+<td>Частота кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">МГц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CLOADHF</td>
+<td>Емкость нагрузки кварцевого резонатора</td>
+<td>Дифференциальная</td>
+<td style="text-align: center;">9.5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10.5</td>
+<td style="text-align: center;" rowspan="2">пФ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>C0XTALHF</td>
+<td>Емкость шунтирования кварцевого резонатора</td>
+<td>PA LP LF, работающий от DC-DC или LDO</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RSXTALHF</td>
+<td>Последовательное сопротивление кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">Ом</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CMXTALHF</td>
+<td>Подвижная емкость кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">1.3</td>
+<td style="text-align: center;">1.89</td>
+<td style="text-align: center;">2.5</td>
+<td style="text-align: center;">fF</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>DRIVEHF</td>
+<td>Мощность выходного сигнала</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">μW</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="3">FRTOLHF</td>
+<td rowspan="3">Точность кварцевого резонатора</td>
+<td>Начальная</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±10</td>
+<td style="text-align: center;" rowspan="3">ppm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>В диапазоне температур -20 .. 70°C</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±10</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Старение в течение 10 лет</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±10</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 3-13. Параметры регулятора напряжения для питания 32 МГц TCXO.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td><strong>min</strong></td>
+<td><strong>Typ</strong></td>
+<td><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CVTCXO</td>
+<td>Внешний развязывающий конденсатор для шины REG_TCXO</td>
+<td>Рекомендуемый тип конденсатора X5R</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">130</td>
+<td style="text-align: center;">нФ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RVTCXO</td>
+<td>Эквивалентное последовательное сопротивление&nbsp;CVTCXO</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Ом</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="3">VTCXO</td>
+<td rowspan="3">Регулируемое напряжение питания TCXO<br>VDDop &gt; VTCXO + 200mV</td>
+<td>RegTcxoTune = 000</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.6</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="3">V</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RegTcxoTune = 001</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.7</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RegTcxoTune = 111</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">3.3</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ILTCXO</td>
+<td>Ток нагрузки для регулятора TCXO</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">mA</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>ATCXO</td>
+<td>Амплитуда сигнала внешнего TCXO, подаваемого на вывод XTA</td>
+<td>Сигнал подается через последовательную цепочку из 10 пФ и 220 ом</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">1.2</td>
+<td style="text-align: center;">V<sup>(1)</sup></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #808080;">Примечание (1): напряжение сигнала от пика до пика.</span></p>
+<p>Таблица 3-14. Параметры кварца 32 кГц.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FXOSCLF</td>
+<td>Частота кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">32400</td>
+<td style="text-align: center;">32768</td>
+<td style="text-align: center;">33100</td>
+<td style="text-align: center;">Гц</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CLOADLF</td>
+<td>Емкость нагрузки кварцевого резонатора</td>
+<td>Дифференциальная</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;">-</td>
+<td rowspan="2" style="text-align: center;">пФ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>C0XTALLF</td>
+<td>Емкость шунтирования кварцевого резонатора</td>
+<td>PA LP LF, работающий от DC-DC или LDO</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>RSXTALLF</td>
+<td>Последовательное сопротивление кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">кОм</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>CMXTALLF</td>
+<td>Подвижная емкость кварцевого резонатора</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">4.7</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">fF</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>DRIVELF</td>
+<td>Мощность выходного сигнала</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">μW</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td rowspan="3">FRTOLLF</td>
+<td rowspan="3">Точность кварцевого резонатора</td>
+<td>Начальная</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±20</td>
+<td rowspan="3" style="text-align: center;">ppm</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>В диапазоне температур -20 .. 70°C</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±180</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>Старение в течение 10 лет</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">±3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.6. Параметры цифрового I/O, памяти Flash и интерфейса</strong></p>
+<p><strong>3.6.1</strong>. Спецификации цифрового I/O</p>
+<p>Таблица 3-15. Сигналы цифрового I/O и NRESET.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VIH</td>
+<td>Входной уровень лог. 1</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">0.7xVBAT</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">VBAT+0.3</td>
+<td style="text-align: center;" rowspan="4">V</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VIL</td>
+<td>Входной уровень лог. 0</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">-0.3</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">0.3xVBAT</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VOH</td>
+<td>Выходной уровень лог. 1</td>
+<td>I<sub>max</sub> = 2.5mA</td>
+<td style="text-align: center;">0.9xVBAT</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">VBAT</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>VOL</td>
+<td>Выходной уровень лог. 0</td>
+<td>I<sub>max</sub> = -2.5mA</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">&nbsp;</td>
+<td style="text-align: center;">0.1xVBAT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.6.2</strong>. Спецификации памяти Flash</p>
+<p>В чип LR1121 встроена память Flash для хранения внутреннего firmware, конфигурационных данных приложения и ключей защиты.</p>
+<p>Таблица 3-16. Спецификации памяти Flash.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td><strong>Условия</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FEND</td>
+<td>Ресурс flash-памяти</td>
+<td>T<sub>op</sub> = -40 .. 85°C</td>
+<td style="text-align: center;">10000</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Циклов</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>FRET</td>
+<td>Надежность хранения данных</td>
+<td>T<sub>op</sub> = 85°C</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Лет</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.6.3</strong>. Интерфейс SPI</p>
+<p><strong>SPI</strong> дает доступ к регистру конфигурации по полнодуплексному протоколу, соответствующему CPOL = 0 и CPHA = 0 (полярность и фаза тактов соответствует номенклатуре Motorola/NXP® Freescale™). Реализовано только поведение подчиненного устройства (SPI slave). Транзакция всегда начинается по спаду уровня NSS. MISO находится в состоянии высокого сопротивления, когда на NSS уровень лог. 1. SPI работает от внешнего сигнала тактов SCK, допускается частота тактов интерфейса до 16 МГц.</p>
+<p>Все тайминги в следующей таблице даны для максимальной емкостной нагрузки 10 пФ.</p>
+<p>Таблица 3-17. Требования к интервалам времени SPI.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><b>Символ</b></td>
+<td><strong>Описание</strong></td>
+<td style="text-align: center;"><strong>min</strong></td>
+<td style="text-align: center;"><strong>Typ</strong></td>
+<td style="text-align: center;"><strong>MAX</strong></td>
+<td><strong>Ед.</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t1</td>
+<td>Время между спадом MSS и установкой SCK</td>
+<td style="text-align: center;">31.25</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;" rowspan="7">нс</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t2</td>
+<td>Период SCK</td>
+<td style="text-align: center;">61.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t3</td>
+<td>Время лог. 1 SCK</td>
+<td style="text-align: center;">31.25</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t4</td>
+<td>Время удержания от MOSI до SCK</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t5</td>
+<td>Время установки от MOSI до SCK</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t6</td>
+<td>Задержка между NSS до MISO</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>t7</td>
+<td>Задержка между спада SCK до MISO</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">15</td>
+</tr>
+</tbody>
+</table>
+<p>[<strong>4. Информация по применению</strong>]</p>
+<p><strong>4.1. Трансивер Sigfox</strong></p>
+<p>LR1121 поддерживает передачу Sigfox-пакетов на обоих скоростях 100bps и 600bps, что дает совместимость с конфигурациями (Sigfox Radio Configurations) от RC1 до RC7. LR1121 также может принимать входящие соединения Sigfox downlinks.</p>
+<p>Внутри LR1121 нет реализации протокола Sigfox, передача пакетов должна обрабатываться непосредственно на MCU хоста.</p>
+<p><strong>4.2. Модуляция LR-FHSS</strong></p>
+<p>LR1121 поддерживает модуляцию LR-FHSS (совместимую со спецификацией LoRaWAN, выпущенной LoRa Alliance), которая модулирует содержимое пакета по нескольким псевдослучайным частотам, что дает следующие преимущества:</p>
+<p>• В регионах FCC модуляция LR-FHSS может устранить ограничение времени передачи на одной частоте (dwell-time), накладываемое технологией intra-packet hopping. Таким образом это позволяет использовать пониженные скорости передачи данных, что увеличивает дистанцию соединения и передавать полезную нагрузку большего объема.<br>• В регионах ETSI модуляция LR-FHSS может предоставить улучшенную емкость и даже больше дистанции связи, чем предоставляет LoRa, для устройств с меньшей скоростью передачи, где ограничен спектр - для таких регионов, как Европа или Индия.<br>• Модуляция LR-FHSS дает даже больше надежность связи в присутствии помех, чем LoRa.</p>
+<p>LR1121 может генерировать пакеты, модулированные LR-FHSS, на всех диапазонах sub-GHz, S-band и 2.4GHz ISM.</p>
+<p>В LR1121 реализована только передача LR-FHSS.</p>
+<p><strong>4.3. Chip Wakeup Sequence</strong></p>
+<p>Поддерживается следующая последовательность вывода чипа из сна (wakeup sequence):</p>
+<p>1. NSS переводится в лог. 0.<br>2. Ожидание 100 мкс.<br>3. Перевод NSS в лог 1.<br>4. Ожидание момента, когда сигнал BUSY перейдет в лог. 0, после этого можно выполнять команды.</p>
+<p><strong>4.4. Выход из Sleep Mode</strong></p>
+<p>LR1121 выйдет из режима самого низкого потребления, режима сна (lowest-power Sleep mode) следующими способами:</p>
+<p>• Спад уровня сигнала NSS.<br>• Таймаут RTC, сконфигурированный параметром SleepConfig команды SetSleep().</p>
+<p>Их опции реализации описаны в User Manual [2], и они обе могут использоваться в комбинации.</p>
+<p><strong>4.5. Цифровые входы/выходы</strong></p>
+<p>У LR1121 есть 12 ножек портов цифрового ввода/вывода (DIO), которые могут использоваться для коммуникации с хостом, датчиками или периферийными устройствами, обработки прерываний и управления внешними RF-ключами или LNA.</p>
+<p><strong>4.5.1</strong>. Конфигурация DIO</p>
+<p>В LR1121 реализована матрица ключей (DIO switch matrix, SWM), позволяющая переконфигурировать DIO в зависимости от требований приложения. Для случая использования трансивера LR1121 управляется от MCU хоста, следовательно выводы DIO предназначены для коммуникации хоста. Чтобы уменьшить ограничения на количество выводов MCU хоста, пять портов DIO могут использоваться для управления внешними RF-ключами и/или LNA.</p>
+<p>Таблица 4-1. Привязка функций к выводам DIO LR1121.</p>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#8cacbb">
+<tbody>
+<tr style="background-color: #dee7ec;">
+<td><strong>№</strong></td>
+<td><strong>Имя</strong></td>
+<td><strong>Функция</strong></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>6</td>
+<td>NRESET</td>
+<td>NRESET</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>7</td>
+<td>32k_P/DIO11</td>
+<td>32k_P/NC</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>8</td>
+<td>32k_N/DIO10</td>
+<td>32k_N/RFSW4</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>9</td>
+<td>DIO9</td>
+<td>IRQ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>10</td>
+<td>DIO8</td>
+<td>RFSW3</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>11</td>
+<td>DIO7</td>
+<td>RFSW2</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>19</td>
+<td>DIO6</td>
+<td>RFSW1</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>20</td>
+<td>DIO5</td>
+<td>RFSW0</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>21</td>
+<td>DIO4</td>
+<td>SPI MISO</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>22</td>
+<td>DIO3</td>
+<td>SPI MOSI</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>23</td>
+<td>DIO2</td>
+<td>SPI SCK</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>24</td>
+<td>DIO1</td>
+<td>SPI NSS</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td>25</td>
+<td>DIO0/BUSY</td>
+<td>BUSY</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.5.2</strong>. Управление RF-ключами</p>
+<p>LR1121 может управлять RF-ключами в количестве до 5 штук, или дополнительными LNA на цепях RFIO_HF и Sub‐GHz RF, уменьшая тем самым требования необходимому количеству выводов к MCU хоста. Это дает вам больше свободы в разработке аппаратных решений для приложения. Полярность сигналов управления ключами может быть установлена в каждом радио режиме. По умолчанию никакие DIO не используются как сигналы управления RF-ключами, и все выходы остаются в состоянии высокого сопротивления (High-Z).</p>
+<p><strong>4.5.3</strong>. Reset</p>
+<p>Полный перезапуск внутреннего firmware LR1121 может быть активирован путем подачи импульса лог. 0 на вывод NRESET. Это автоматически приведет к запуску стандартной процедуры калибровки, и любой предыдущий контекст будет потерян. Чтобы произошел сброс, сигнал NRESET должен удерживаться в лог. 0 не менее 100 мкс.</p>
+<p><strong>4.5.4</strong>. Прерывания для хоста</p>
+<p>LR1121 предоставляет 24 источника прерывания, позволяя хосту реагировать на специальные события в системе LR1121 без необходимости постоянно опрашивать его регистры, что особенно важно для разработки мобильных приложений, где важна оптимизация энергопотребления.</p>
+<p>Прерывания для хоста сигнализируются через один (или несколько) сигнал IRQ, что конфигурируется на выводах DIO, и их можно маскировать или очищать специальными командами.</p>
+<p>Статус прерываний хост может прочитать через 32-разрядный регистр состояния прерываний (interrupt status register). Прерывания могут очищаться записью 1 в соответствующий бит этого регистра.</p>
+<p><strong>4.6. Апгрейд/обновление firmware</strong></p>
+<p>В процессе своего производства LR1121 будет соответствующим образом сконфигурирован, и в него будет записан образ firmware. В процессе производства конечного продукта пользователь может обновить полный образ работающего на LR1121 firmware через интерфейс SPI. Загрузчик (bootloader) LR1121 будет аутентифицировать firmware и позволит его дальнейшее выполнение. На LR1121 могут запуститься только те образы firmware, которые предоставлены компанией Semtech. Рекомендуется прошить во flash устройства последний доступный релиз firmware.</p>
+<p>LR1121 может также поддерживать обновления патчами, обычно для поддержки "в полях" (т. е. для устранения выявленных ошибок на конечном устройстве потребителя). Для дополнительной информации см. AN1200.57 [3].</p>
+<p><strong>4.7. Упрощенная образцовая схема</strong></p>
+<p><a href="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-Multi-band-EU-US-LoRaWAN-fig4-1.png"><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-Multi-band-EU-US-LoRaWAN-fig4-1.png" width="600" height="628" alt="LR1121 Multi band EU US LoRaWAN fig4 1"></a></p>
+<p>Рис. 4-1. Multi-band EU/US LoRaWAN.</p>
+<p>Для дополнительного руководства по источникам тактов 32 МГц и 32 кГц см. AN1200.74 LoRa Edge™ Clock Requirements.</p>
+<p><strong>4.8. Пример образца разводки печатной платы</strong></p>
+<p><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-reference-design-layout-fig4-2.png" alt="LR1121 reference design layout fig4 2"></p>
+<p>Рис. 4-2. Reference Design Layout PCB.</p>
+<p>[<strong>5. Информация корпуса</strong>]</p>
+<p>
+</p><table>
+<tbody>
+<tr>
+<td><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-package-outline-drawing-fig5-1.png" alt="LR1121 package outline drawing fig5 1"></td>
+<td>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#0000">
+<tbody>
+<tr style="background-color: #ffffff;">
+<td colspan="7" style="text-align: center;">РАЗМЕРЫ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">DIM</td>
+<td style="text-align: center;" colspan="3">ДЮЙМЫ</td>
+<td style="text-align: center;" colspan="3">МИЛЛИМ.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">.031</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">.039</td>
+<td style="text-align: center;">0.80</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">A1</td>
+<td style="text-align: center;">.000</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">.002</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">A2</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">(.008)</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">(0.02)</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">.007</td>
+<td style="text-align: center;">.010</td>
+<td style="text-align: center;">.012</td>
+<td style="text-align: center;">0.18</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">.193</td>
+<td style="text-align: center;">.197</td>
+<td style="text-align: center;">.201</td>
+<td style="text-align: center;">4.90</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">5.10</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">D1</td>
+<td style="text-align: center;">.140</td>
+<td style="text-align: center;">.146</td>
+<td style="text-align: center;">.150</td>
+<td style="text-align: center;">3.30</td>
+<td style="text-align: center;">3.70</td>
+<td style="text-align: center;">3.80</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">.193</td>
+<td style="text-align: center;">.197</td>
+<td style="text-align: center;">.201</td>
+<td style="text-align: center;">4.90</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">5.10</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">E1</td>
+<td style="text-align: center;">.140</td>
+<td style="text-align: center;">.146</td>
+<td style="text-align: center;">.150</td>
+<td style="text-align: center;">3.30</td>
+<td style="text-align: center;">3.70</td>
+<td style="text-align: center;">3.80</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">e</td>
+<td style="text-align: center;" colspan="3">.020 BSC</td>
+<td style="text-align: center;" colspan="3">.50 BSC</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">.012</td>
+<td style="text-align: center;">.016</td>
+<td style="text-align: center;">.020</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">0.40</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">N</td>
+<td style="text-align: center;" colspan="3">32</td>
+<td style="text-align: center;" colspan="3">32</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">aaa</td>
+<td style="text-align: center;" colspan="3">.003</td>
+<td style="text-align: center;" colspan="3">0.08</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">bbb</td>
+<td style="text-align: center;" colspan="3">.004</td>
+<td style="text-align: center;" colspan="3">0.10</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>Рис. 5-1. Размеры корпуса MLPQ32 чипа LR1121.</p>
+<p>Замечания:</p>
+<p>1. Контролируемые размеры указаны в миллиметрах (углы в градусах).<br>2. Компланарность применяется как к нижней контактной площадке (exposed pad), так и к выводам корпуса.</p>
+<p><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-package-marking-fig5-2.png" alt="LR1121 package marking fig5 2"></p>
+<p>Рис. 5.2. Маркировка чипа LR1121.</p>
+<p>Маркировка корпуса 5x5 мм MLPQ32:</p>
+<p>nnnnnn = тип чипа (например LR1121)<br>yyww = код даты производства (например 2052)<br>xxxxxx = Semtech Lot No. (например E90101<br>xxxxxx&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0101-1)</p>
+<table>
+<tbody>
+<tr>
+<td><img src="./LR1121_ трансивер LoRa _ arm _ programming_files/LR1121-land-pattern-fig5-3.png" alt="LR1121 land pattern fig5 3"></td>
+<td>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#0000">
+<tbody>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;" colspan="3">РАЗМЕРЫ</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">DIM</td>
+<td style="text-align: center;">ДЮЙМЫ</td>
+<td style="text-align: center;">МИЛЛИМ.</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">(.197)</td>
+<td style="text-align: center;">(5.00)</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">.165</td>
+<td style="text-align: center;">4.20</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">.146</td>
+<td style="text-align: center;">3.70</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">.146</td>
+<td style="text-align: center;">3.70</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">.020</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">.012</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">.031</td>
+<td style="text-align: center;">0.80</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="text-align: center;">Z</td>
+<td style="text-align: center;">.228</td>
+<td style="text-align: center;">5.80</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Рис. 5-3. Посадочное место чипа LR1121.</p>
+<p>Замечания:</p>
+<p>1. Информация по этому посадочному месту приведена только как образец. Проконсультируйтесь с вашими производителями печатных плат для обеспечения совместимости дизайна с производством.<br>2. Переходные отверстия на нижней теплоотводящей контактной площадке должны быть соединены с общей шиной системы.<br>3. Корпус имеет квадратную форму, размеры применимы к направлениям X и Y.</p>
+<p>Профили пайки, варианты упаковки и другую информацию см. в даташите [1].</p>
+<p>[<strong>Словарик</strong>]</p>
+<p><strong>ACR</strong> Adjacent Channel Rejection, подавление сигнала по соседнему каналу.</p>
+<p><strong>ADC</strong> Analog-to-Digital Converter, аналого-цифровой преобразователь, АЦП.</p>
+<p><strong>AGC</strong> Auto Gain Control, автоматическое управление усилением, АРУ.</p>
+<p><strong>AP</strong> Access Point, точка доступа.</p>
+<p><strong>β</strong> Modulation Index, индекс модуляции.</p>
+<p><strong>BER</strong> Bit Error Rate, частота появление однобитных ошибок.</p>
+<p><strong>BOM</strong> Bill Of Materials, список деталей.</p>
+<p><strong>BR</strong> Bit Rate, скорость передачи бит.</p>
+<p><strong>BW</strong> BandWidth, полоса пропускания.</p>
+<p><strong>BWF</strong> FSK BandWidth, полоса пропускания модуляции FSK.</p>
+<p><strong>BWL</strong> LoRa BandWidth, полоса пропускания LoRa.</p>
+<p><strong>CPOL</strong> Clock Polarity, полярность тактов (термин интерфейса SPI).</p>
+<p><strong>CPHA</strong> Clock Phase, фаза тактов (термин интерфейса SPI).</p>
+<p><strong>CPU</strong> Central Processor Unit, процессор.</p>
+<p><strong>CR</strong> Coding Rate, скорость кодирования.</p>
+<p><strong>CRC</strong> Cyclical Redundancy Check, контрольная сумма.</p>
+<p><strong>CW</strong> Constant Wave, генерация непрерывной несущей.</p>
+<p><strong>DC-DC</strong> Direct Current to Direct Current Converter, импульсный преобразователь напряжения постоянного тока.</p>
+<p><strong>DER</strong> Detection Error Rate, детектирования частоты появления ошибок.</p>
+<p><strong>DIO</strong> Digital Input / Output, цифровой вход / выход.</p>
+<p><strong>DNC</strong> Do Not Connect, никуда не подключаемый вывод микросхемы.</p>
+<p><strong>DSB</strong> Double Side Band, двухполосная модуляция. Термин относится чаще всего к модуляции AM. В отличие от SSB (Single Side Band, однополосная модуляция), в DSB используются полосы частот ниже и выше частоты несущей.</p>
+<p><strong>ECO</strong> Engineering Change Order, приказ о внесении технических изменений (обычно связанный с исправлением ошибок кремния).</p>
+<p><strong>ESD</strong> Electro-Static Discharge, электростатический разряд.</p>
+<p><strong>EUT</strong> Equipment Under Test, тестируемое оборудование.</p>
+<p><strong>EVK</strong> EValuation Kit, плата разработчика, образец применения устройства (Reference EVK).</p>
+<p><strong>FDA</strong> Frequency Deviation, девиация частоты.</p>
+<p><strong>FEC</strong> Forward Errors Correction, добавление в передачу избыточного кодирования, что позволяет на приеме обнаруживать и корректировать ошибки.</p>
+<p><strong>FIFO</strong> First Input First Output, первым вошел первым вышел. Вид организации буфера данных с упорядоченным доступом.</p>
+<p><strong>FIPS-197</strong> стандарт, опубликованный National Institute of Standards and Technology (NIST), который определяет Advanced Encryption Standard (AES). AES является симметричным блочным шифром для шифрования и дешифровки данных. Стандарт AES публично доступен, его алгоритм свободен для бесплатного использования различными организациями, включая федеральное правительство США, для защиты чувствительной информации.</p>
+<p><strong>FSK</strong> Frequency Shift Keying, частотная манипуляция.</p>
+<p><strong>GFSK</strong> Gaussian Frequency Shift Keying, то же самое, что и FSK, но используется фильтр Гаусса для смягчения переключения между частотами.</p>
+<p><strong>GMSK</strong> Gaussian Minimum Shift Keying, это GFSK с минимальным сдвигом частоты.</p>
+<p><strong>high-Q choke inductor</strong> специализированная индуктивность, разработанная для блокирования прохождения высокочастотных переменных сигналов RF усилителей мощности, но вместе с тем позволяя проходить низкочастотным сигналам и постоянному току. Термин "high-Q" обозначает высокую добротность, т. е. малые потери полезного сигнала и высокую избирательность, что необходимо для высокочастотных применений.</p>
+<p><strong>IF</strong> Intermediate Frequency, промежуточная частота.</p>
+<p><strong>IIP</strong> Input Intercept Point, характеристика, используемая для оценки нелинейности электронных устройств, таких как усилители и смесители. Она показывает, при какой входной мощности продукты искажений, генерируемые устройством, будут равны по мощности основному сигналу. Более высокие значения IIP указывают на лучшую линейность и меньшие искажения.</p>
+<p><strong>IQ</strong> в технологии программно/определяемого радиотракта (Software-Defined Radio) сигналы I/Q представляют способ захват и обработки частот радиосигнала. Это пара сигналов, которые называют "in-phase" (I) и "quadrature" (Q), представляющая комплексную амплитуду радиосигнала. Такое представление выборок сигнала позволяет реализовать более гибкую и эффективную обработку сигнала в SDR.</p>
+<p><strong>IRQ</strong> Interrupt Request, запрос на прерывание.</p>
+<p><strong>ISM</strong> Industrial, Scientific and Medical. Термин, обозначающий радиочастотный спектр, используемый в промышленности, науке и медицине.</p>
+<p><strong>LBD</strong> Low Battery Detector, детектор низкого напряжения батареи.</p>
+<p><strong>LDO</strong> Low-Dropout, малое падения напряжения. Термин, обозначающий аналоговые стабилизаторы напряжения.</p>
+<p><strong>LDRO</strong> Low Data Rate Optimization, оптимизация низкой скорости данных.</p>
+<p><strong>LNA</strong> Low-Noise Amplifier, малошумящий усилитель.</p>
+<p><strong>LoRa</strong><sup>®</sup> Long Range Communication, дословно переводится как "радиообмен на дальних расстояниях". Торговая марка LoRa<sup>®</sup> зарегистрирована корпорацией Semtech.</p>
+<p><strong>LR-FHSS</strong> Long Range Frequency Hopping Spread Spectrum. Технология, используемая для увеличения дальности и надежности беспроводной связи, особенно в сетях IoT (интернет вещей). Она сочетает в себе преимущества скачкообразной перестройки частоты (FHSS) и расширения спектра, обеспечивая высокую пропускную способность и устойчивость к помехам.</p>
+<p><strong>LSB</strong> Least Significant Bit, самый младший значащий бит.</p>
+<p><strong>MCU</strong> MicroController Unit, микроконтроллер.</p>
+<p><strong>MIC</strong> Message Integration Check, проверка целостности сообщений.</p>
+<p><strong>MISO</strong> Master Input Slave Output, вход главного устройства и выход подчиненного (термин относится к интерфейсу SPI).</p>
+<p><strong>MOSI</strong> Master Output Slave Input, выход главного устройства и вход подчиненного (термин относится к интерфейсу SPI).</p>
+<p><strong>MSB</strong> Most Significant Bit, самый старший значащий бит.</p>
+<p><strong>MSK</strong> Minimum-Shift Keying, манипуляция с минимальным сдвигом. Это вид цифровой модуляции, который является частным случаем частотной манипуляции с непрерывной фазой (CPFSK). В MSK минимальный сдвиг частоты между состояниями логической "1" и логического "0" обеспечивает ортогональность сигналов и оптимизирует спектральную эффективность.</p>
+<p><strong>NC</strong> Not Connected, вывод микросхемы, который никуда не подключается.</p>
+<p><strong>NRZ</strong> Non Return to Zero, без возврата к нулю, это простой способ кодирования цифровой информации, при котором логический ноль представляется одним уровнем сигнала, а логическая единица - другим. Обычно логический ноль соответствует низкому уровню напряжения, а логическая единица - высокому. Это двухуровневый код, в котором переход сигнала происходит на границе битовых интервалов.</p>
+<p><strong>NSS</strong> Slave Select active low, сигнал выборки подчиненного устройства с активным нулевым логическим уровнем (термин относится к интерфейсу SPI).</p>
+<p><strong>NVM</strong> Non-Volatile Memory, энергонезависимая память.</p>
+<p><strong>OCP</strong> Over Current Protection, защита от перегрузки по току.</p>
+<p><strong>PA</strong> Power Amplifier, усилитель мощности.</p>
+<p><strong>PCB</strong> Printed Circuit Board, печатная плата.</p>
+<p><strong>PER</strong> Packet Error Rate, частота появления ошибок пакетов.</p>
+<p><strong>PLL</strong> Phase-Locked Loop, фазовая автоматическая подстройка частоты, ФАПЧ.</p>
+<p><strong>POR</strong> Power On Reset, сброс при подаче питания.</p>
+<p><strong>ramp time</strong> относится ко времени (которое программируется) нарастания выходной мощности PA от низкого уровня (обычно близкого к уровню шума) до желаемого стабильного выходного уровня. Это критический параметр для обеспечения эффективной и надежной передачи данных, в частности для систем, использующих протокол множественного доступа с разделением времени (time-division multiple access, TDMA).</p>
+<p><strong>RC13M</strong> 13MHz Resistance-Capacitance Oscillator, RC-генератор тактов невысокой точности на частоте 13 МГц.</p>
+<p><strong>RC64k</strong> 64kHz Resistance-Capacitance Oscillator, RC-генератор тактов невысокой точности на частоте 64 кГц.</p>
+<p><strong>RFO</strong> Radio Frequency Output, выход радиочастоты.</p>
+<p><strong>RFU</strong> Reserved For Use, зарезервировано для будущего использования.</p>
+<p><strong>RTC</strong> Real-Time Clock, часы реального времени.</p>
+<p><strong>SCK</strong> Serial Clock, последовательные такты (термин относится к интерфейсу SPI).</p>
+<p><strong>SF</strong> Spreading Factor. В контексте LoRaWAN - это коэффициент расширения спектра, который определяет скорость передачи данных и влияет на дальность связи, помехоустойчивость и время нахождения в эфире. Более высокие значения SF (например, SF12) обеспечивают большую дальность и помехоустойчивость, но при этом снижают скорость передачи и увеличивают время, необходимое для передачи данных. В свою очередь, более низкие значения SF (например, SF7) увеличивают скорость передачи, но уменьшают дальность и помехоустойчивость.</p>
+<p><strong>SNR</strong> Signal-Noise Ratio, соотношение сигнал/шум.</p>
+<p><strong>SPI</strong> Serial Peripheral Interface, промышленный стандарт высокоскоростного последовательного интерфейса.</p>
+<p><strong>TCXO</strong> Temperature-Compensated Crystal Oscillator, температурно-комменсированный кварцевый генератор (с компенсацией ухода частоты при изменении температуры).</p>
+<p><strong>ufix(8,1)</strong> определение типа данных с фиксированной запятой, принятое в среде MATLAB [5]. Обозначает число без знака, где все число кодируется 8 битами, а дробная 1 битом. Таким образом, на кодирование целой части числа отводится 7 бит.</p>
+<p><strong>VSWR</strong> Voltage Standing Wave Ratio, коэффициент стоячей волны (КСВ).</p>
+<p><strong>WDG</strong> Watch-Dog Timer, сторожевой таймер - специальное аппаратное устройство для обнаружения ситуаций зависания программы и выхода из этого состояния.</p>
+<p><strong>whitening</strong> наложение операцией XOR на данные псевдослучайной последовательности. Подробности см. в секции "8.4.3.4. Whitening" руководства [2].</p>
+<p><strong>XOSC</strong> Crystal Oscillator, кварцевый генератор.</p>
+<p>[<strong>Ссылки</strong>]</p>
+<p><strong>1</strong>. LR1121 Datasheet Long Range, Low Power, Multi-band LoRa<sup>®</sup> Transceiver site:semtech.com.<br><strong>2</strong>. <a href="https://microsin.net/programming/arm/lr1121-user-manual.html">LR1121: руководство пользователя</a>.<br><strong>3</strong>. AN1200.57 site:semtech.com.<br><strong>4</strong>. AN1200.74 LoRa Edge™ Clock Requirements site:semtech.com.<br><strong>5</strong>. Fixed-Point Data in MATLAB and Simulink site:mathworks.com.</p></td>
+</tr>
+
+</tbody></table>
+<span class="article_separator">&nbsp;</span>
+
+
+</body></html>
